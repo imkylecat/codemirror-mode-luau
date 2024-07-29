@@ -1,4 +1,4 @@
-//import CodeMirror from "codemirror";
+import CodeMirror from "codemirror";
 
 CodeMirror.defineMode("luau", function () {
     const keywords =
