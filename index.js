@@ -92,6 +92,10 @@ CodeMirror.defineMode("luau", function () {
             }
             */
             if (stream.match(/[a-zA-Z_]\w*/)) {
+                if (stream.match(/\s*&\s*{/, false)) {
+                    return "type";
+                }
+
                 return "variable";
             }
             if (stream.match(/:/)) {
