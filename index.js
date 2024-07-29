@@ -100,7 +100,7 @@ CodeMirror.defineMode("luau", function () {
                 }
 
                 let currentPos = stream.pos;
-                if (stream.match(/\s*\)\s*do/, false)) {
+                if (stream.match(/\s*:\s*[a-zA-Z_]\w*\s*,|\s*\)\s*do/, false)) {
                     stream.pos = currentPos;
                     return "variable-2";
                 }
