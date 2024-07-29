@@ -70,6 +70,9 @@ CodeMirror.defineMode("luau", function () {
             if (stream.match(/[a-zA-Z_]\w*/)) {
                 return "variable";
             }
+            if (stream.match(/[=+\-*/]/)) {
+                return "operator";
+            }
             stream.next();
             return null;
         },
