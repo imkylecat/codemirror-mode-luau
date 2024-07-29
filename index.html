@@ -77,6 +77,19 @@ if #coolTable.wow >= 1 then
 else
     print("not cooler 3")
 end
+
+do
+    local module = {}
+
+    function module:getHello(): string
+        return "hello from module!"
+    end
+    function module:hello(): string
+        return self:getHello()
+    end
+
+    print(module:hello())
+end
         </textarea>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.17/codemirror.min.js"></script>
         <script src="./index.js"></script>
