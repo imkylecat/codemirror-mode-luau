@@ -17,9 +17,12 @@
     </head>
     <body>
         <textarea id="code" name="code">
+--[[
+    big comment
+]]
 local atomTest = true
 local atomTestWithType: boolean = true
-local atomTestWithTyper: true | false = true
+local atomTestWithTyper: true | false = true -- comments
 local positiveTest = true
 local negativeTest = false
 local stringTest = "string"
@@ -27,6 +30,10 @@ local stringTestWithType: string = "string"
 
 local coolNumber = 1
 coolNumber *= 2
+
+--[[
+    tablas
+]]--
 
 local coolTable = {
     wow = {
