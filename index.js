@@ -73,6 +73,9 @@ CodeMirror.defineMode("luau", function () {
             if (stream.match(/[=+\-*/]/)) {
                 return "operator";
             }
+            if (stream.match(/[{}]/)) {
+                return "bracket";
+            }
             stream.next();
             return null;
         },
