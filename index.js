@@ -95,8 +95,15 @@ CodeMirror.defineMode("luau", function () {
                 return "variable";
             }
             if (stream.match(/:/)) {
-                state.afterColon = true;
-                return "operator";
+                let currentPos = stream.pos;
+                stream.backUp(currentPos);
+                let line = stream.string.slice(0, currentPos);
+                if (/\blocal\b\s+[a-zA-Z_]\w*\s*:$/.test(line)) {
+                    state.afterColon = true;
+                    stream.pos = currentPos;
+                    return "operator";
+                }
+                stream.pos = currentPos;
             }
             if (stream.match(/==|~=|>=|<=|[=+\-*/|()?\[\]&]/)) {
                 state.afterColon = false;
