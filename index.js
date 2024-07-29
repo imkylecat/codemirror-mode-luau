@@ -17,6 +17,17 @@ CodeMirror.defineMode("luau", function () {
         return "comment";
     }
 
+    function backtickString(stream, state) {
+        while (!stream.eol()) {
+            if (stream.match(/`/)) {
+                state.tokenize = null;
+                break;
+            }
+            stream.next();
+        }
+        return "string";
+    }
+
     return {
         startState: function () {
             return { tokenize: null };
@@ -28,6 +39,10 @@ CodeMirror.defineMode("luau", function () {
 
             if (stream.match(/--\[\[/)) {
                 state.tokenize = longComment;
+                return state.tokenize(stream, state);
+            }
+            if (stream.match(/`/)) {
+                state.tokenize = backtickString;
                 return state.tokenize(stream, state);
             }
             if (stream.match(/--/)) {
