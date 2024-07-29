@@ -1,10 +1,10 @@
-import CodeMirror from "codemirror";
+//import CodeMirror from "codemirror";
 
 CodeMirror.defineMode("luau", function () {
     const keywords =
         /\b(function|end|if|then|else|elseif|while|do|for|in|repeat|until|return|local|not|and|or)\b/;
     const globals =
-        /\b(print|math|table|string|coroutine|os|io|debug|package|require|_G|shared|game|pairs|ipairs)\b/;
+        /\b(print|math|table|string|coroutine|Vector2|Vector3|UDim|UDim2|os|io|debug|package|require|_G|shared|game|pairs|ipairs)\b/;
 
     function longComment(stream, state) {
         while (!stream.eol()) {
