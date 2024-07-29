@@ -46,6 +46,30 @@ end
 for i: number, v in ipairs(coolTable) do
     print(i, v)
 end
+
+print(#coolTable)
+
+if true then
+    print("cool")
+end
+
+if #coolTable.wow == 1 then
+    print("cooler")
+else
+    print("not cooler")
+end
+
+if #coolTable.wow ~= 1 then
+    print("cooler 2")
+else
+    print("not cooler 2")
+end
+
+if #coolTable.wow >= 1 then
+    print("cooler 3")
+else
+    print("not cooler 3")
+end
         </textarea>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.17/codemirror.min.js"></script>
         <script src="./index.js"></script>
