@@ -61,16 +61,24 @@ CodeMirror.defineMode("luau", function () {
             if (stream.match(keywords)) {
                 return "keyword";
             }
-            if (state.afterColon && stream.match(/[^=]+(?==)/)) {
+            if (state.afterColon && stream.match(/[^=|]+(?==)/)) {
                 state.afterColon = false;
                 return "type";
             }
             if (stream.match(globals)) {
                 return "builtin";
             }
+            if (stream.match(/\btrue\b/)) {
+                return "positive";
+            }
+            if (stream.match(/\bfalse\b/)) {
+                return "negative";
+            }
+            /*
             if (stream.match(/\b(true|false)\b/)) {
                 return "atom";
             }
+            */
             if (stream.match(/[a-zA-Z_]\w*/)) {
                 return "variable";
             }
@@ -78,7 +86,7 @@ CodeMirror.defineMode("luau", function () {
                 state.afterColon = true;
                 return "operator";
             }
-            if (stream.match(/[=+\-*/]/)) {
+            if (stream.match(/[=+\-*/|]/)) {
                 return "operator";
             }
             if (stream.match(/[{}]/)) {
