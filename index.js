@@ -30,7 +30,11 @@ CodeMirror.defineMode("luau", function () {
 
     return {
         startState: function () {
-            return { tokenize: null };
+            return {
+                tokenize: null,
+                afterColon: false,
+                afterTypeKeyword: false,
+            };
         },
         token: function (stream, state) {
             if (state.tokenize) {
@@ -57,6 +61,14 @@ CodeMirror.defineMode("luau", function () {
             }
             if (stream.match(/\b\d+(\.\d+)?\b/)) {
                 return "number";
+            }
+            if (stream.match(/\btype\b/)) {
+                state.afterTypeKeyword = true;
+                return "keyword";
+            }
+            if (state.afterTypeKeyword && stream.match(/[a-zA-Z_]\w*/)) {
+                state.afterTypeKeyword = false;
+                return "type";
             }
             if (stream.match(keywords)) {
                 return "keyword";
