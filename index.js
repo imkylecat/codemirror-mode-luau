@@ -5,7 +5,6 @@ CodeMirror.defineMode("luau", function () {
         /\b(_G|shared|function|end|if|then|else|elseif|while|do|for|in|repeat|until|return|local|not|and|or)\b/;
     const globals =
         /\b(print|math|table|string|coroutine|os|io|debug|package|require|_G|shared)\b/;
-    const types = /\b(number|string|boolean|table|function|any|void)\b/; // Add more types as needed
 
     function longComment(stream, state) {
         while (!stream.eol()) {
@@ -62,7 +61,7 @@ CodeMirror.defineMode("luau", function () {
             if (stream.match(keywords)) {
                 return "keyword";
             }
-            if (state.afterColon && stream.match(types)) {
+            if (state.afterColon && stream.match(/[^=]+(?==)/)) {
                 state.afterColon = false;
                 return "type";
             }
