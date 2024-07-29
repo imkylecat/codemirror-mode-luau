@@ -1,0 +1,24 @@
+{
+  "name": "codemirror-mode-luau",
+  "version": "0.0.10",
+  "description": "",
+  "main": "index.js",
+  "keywords": [
+    "lua",
+    "luau",
+    "codemirror"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imkylecat/codemirror-mode-luau.git"
+  },
+  "author": "imkylecat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/imkylecat/codemirror-mode-luau/issues"
+  },
+  "homepage": "https://github.com/imkylecat/codemirror-mode-luau#readme"
+}
