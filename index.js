@@ -4,7 +4,7 @@ CodeMirror.defineMode("luau", function () {
     const keywords =
         /\b(function|export|type|self|end|if|then|else|elseif|while|do|for|in|repeat|until|return|local|not|and|or)\b/;
     const globals =
-        /\b(print|math|table|string|coroutine|Vector2|Vector3|UDim|UDim2|os|io|debug|package|require|_G|shared|game|pairs|ipairs|setmetatable|getmetatable)\b/;
+        /\b(print|math|table|string|coroutine|Vector2|Vector3|UDim|UDim2|os|io|debug|package|require|_G|shared|game|pairs|ipairs|setmetatable|getmetatable|newproxy)\b/;
 
     function longComment(stream, state) {
         while (!stream.eol()) {
