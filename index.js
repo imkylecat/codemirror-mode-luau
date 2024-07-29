@@ -2,7 +2,7 @@ import CodeMirror from "codemirror";
 
 CodeMirror.defineMode("luau", function () {
     const keywords =
-        /\b(function|export|type|self|end|if|then|else|elseif|while|do|for|in|repeat|until|return|local|not|and|or)\b/;
+        /\b(function|export|type|end|if|then|else|elseif|while|do|for|in|repeat|until|return|local|not|and|or)\b/;
     const globals =
         /\b(print|math|table|string|coroutine|Vector2|Vector3|UDim|UDim2|os|io|debug|package|require|_G|shared|game|pairs|ipairs|setmetatable|getmetatable|newproxy)\b/;
 
@@ -73,6 +73,9 @@ CodeMirror.defineMode("luau", function () {
             if (stream.match(keywords)) {
                 return "keyword";
             }
+            if (stream.match(/self/)) {
+                return "variable-3";
+            }
             if (state.afterColon && stream.match(/[a-zA-Z_]\w*/)) {
                 state.afterColon = false;
                 return "type";
@@ -111,7 +114,7 @@ CodeMirror.defineMode("luau", function () {
                 state.afterColon = true;
                 return "operator";
             }
-            if (stream.match(/==|~=|>=|<=|[=+\-*/|()?\[\]&]/)) {
+            if (stream.match(/==|~=|>=|<=|[=+\-*/|()?#\[\]&]/)) {
                 state.afterColon = false;
                 return "operator";
             }
