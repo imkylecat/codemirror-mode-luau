@@ -1,4 +1,4 @@
-import CodeMirror from "codemirror";
+//import CodeMirror from "codemirror";
 
 CodeMirror.defineMode("luau", function () {
     const keywords =
@@ -97,6 +97,12 @@ CodeMirror.defineMode("luau", function () {
             if (stream.match(/[a-zA-Z_]\w*/)) {
                 if (stream.match(/\s*&\s*{/, false)) {
                     return "type";
+                }
+
+                let currentPos = stream.pos;
+                if (stream.match(/\s*\)\s*do/, false)) {
+                    stream.pos = currentPos;
+                    return "variable-2";
                 }
 
                 return "variable";
