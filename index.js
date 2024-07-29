@@ -73,7 +73,7 @@ CodeMirror.defineMode("luau", function () {
             if (stream.match(keywords)) {
                 return "keyword";
             }
-            if (state.afterColon && stream.match(/[^=|,]+(?==|,|\bin\b)/)) {
+            if (state.afterColon && stream.match(/[a-zA-Z_]\w*/)) {
                 state.afterColon = false;
                 return "type";
             }
@@ -100,14 +100,12 @@ CodeMirror.defineMode("luau", function () {
             }
             if (stream.match(/:/)) {
                 let currentPos = stream.pos;
-                stream.backUp(currentPos);
-                let line = stream.string.slice(0, currentPos);
-                if (/\blocal\b\s+[a-zA-Z_]\w*\s*:$/.test(line)) {
-                    state.afterColon = true;
+                if (stream.match(/\s*[a-zA-Z_]\w*\s*\(/, false)) {
                     stream.pos = currentPos;
                     return "operator";
                 }
-                stream.pos = currentPos;
+                state.afterColon = true;
+                return "operator";
             }
             if (stream.match(/==|~=|>=|<=|[=+\-*/|()?\[\]&]/)) {
                 state.afterColon = false;
