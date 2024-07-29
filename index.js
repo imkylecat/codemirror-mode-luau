@@ -49,6 +49,9 @@ CodeMirror.defineMode("luau", function () {
             if (stream.match(globals)) {
                 return "builtin";
             }
+            if (stream.match(/\b(true|false)\b/)) {
+                return "atom";
+            }
             if (stream.match(/[a-zA-Z_]\w*/)) {
                 return "variable";
             }
