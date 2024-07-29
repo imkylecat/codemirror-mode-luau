@@ -14,9 +14,13 @@ CodeMirror.defineMode("luau", function () {
 
     return {
         startState: function () {
-            return { tokenize: () => {} };
+            return { tokenize: null };
         },
         token: function (stream, state) {
+            if (state.tokenize) {
+                return state.tokenize(stream, state);
+            }
+
             if (stream.match(/--\[\[/)) {
                 state.tokenize = longComment;
                 return state.tokenize(stream, state);
