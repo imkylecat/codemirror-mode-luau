@@ -87,6 +87,7 @@ CodeMirror.defineMode("luau", function () {
                 return "operator";
             }
             if (stream.match(/==|~=|>=|<=|[=+\-*/|()?\[\]&]/)) {
+                state.afterColon = false;
                 return "operator";
             }
             if (stream.match(/[{}]/)) {
