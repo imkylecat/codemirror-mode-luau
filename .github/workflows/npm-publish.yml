@@ -36,6 +36,6 @@ jobs:
                   always-auth: true
                   registry-url: "https://npm.pkg.github.com"
             - run: npm ci
-            - run: npm publish --provenance --registry https://npm.pkg.github.com
+            - run: npm publish --provenance --access public --registry https://npm.pkg.github.com
               env:
                   NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
