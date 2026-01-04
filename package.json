@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/imkylecat/codemirror-mode-luau/issues"
   },
-  "homepage": "https://github.com/imkylecat/codemirror-mode-luau#readme"
+  "homepage": "https://github.com/imkylecat/codemirror-mode-luau#readme",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ]
 }
