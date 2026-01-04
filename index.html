@@ -109,6 +109,22 @@ local RunService = game:GetService("RunService")
 function coolFunction(params) do
     print(params)
 end
+
+--=> Attributes
+
+@example
+function foo()
+end
+
+foo = @example function() end
+
+@example -- @example applies to `bar`, not `foo`
+function foo:bar()
+end
+
+@attribute1 @attribute2 @attribute3 @attribute4 @attribute5
+local function example()
+end
         </textarea>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js"></script>
         <script src="./index.js"></script>

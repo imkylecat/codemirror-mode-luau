@@ -63,6 +63,8 @@ CodeMirror.defineMode("luau", function () {
 
         if (stream.match(/\b(true|false)\b/)) return "atom";
 
+        if (stream.match(/@[a-zA-Z_]\w*/)) return "meta";
+
         if (stream.match(/\btype\b/)) {
             state.afterTypeKeyword = true;
             return "keyword";
